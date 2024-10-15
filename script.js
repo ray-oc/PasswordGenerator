@@ -40,7 +40,7 @@ const generatePassword = () => {
 const copyPassword = () => {
   myText.select();
   document.execCommand("copy");
-  console.log("Password copied to clipboard!");
+  alert("Password copied to clipboard!");
 };
 
 generateButton.addEventListener("click", generatePassword);
