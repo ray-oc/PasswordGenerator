@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f0f0f0;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  height: auto;
+  background-color: rgb(61, 84, 152);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  text-align: center;
+  align-items: center;
+  padding: 30px 10px;
+  margin: 0;
+  border-radius: 3px;
+}
+
+#formDec {
+  display: flex;
+  flex-direction: column;
+}
+
+#myText {
+  width: 300px;
+  height: 35px;
+  border-radius: 50vw;
+  border: none;
+  outline: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-family: "Poppins";
+  padding: 15px;
+  background-color: #f0f0f0;
+  color: #333;
+  text-align: center;
+}
+
+.cent {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggleContainer {
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  width: 60px;
+  height: 30px;
+  background-color: rgb(206, 206, 206);
+  border-radius: 50vw;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color 0.5s;
+  margin-left: 10px;
+}
+
+.btn::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  background-color: rgb(55, 55, 136);
+  border-radius: 50%;
+  position: absolute;
+  top: 2.5px;
+  left: 2px;
+  transition: transform 0.5s, background-color 0.5s;
+}
+
+/* Checkbox interaction */
+#toggleNumbers:checked + .btn,
+#toggleLower:checked + .btn,
+#toggleUpper:checked + .btn,
+#toggleSymbols:checked + .btn {
+  background-color: rgb(0, 149, 255);
+}
+
+#toggleNumbers:checked + .btn::before,
+#toggleLower:checked + .btn::before,
+#toggleUpper:checked + .btn::before,
+#toggleSymbols:checked + .btn::before {
+  transform: translateX(30px);
+  background-color: antiquewhite;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+#copyButton {
+  background-color: #008cba;
+}
+
+#copyButton:hover {
+  background-color: #007b9a;
+}
