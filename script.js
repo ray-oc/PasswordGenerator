@@ -38,10 +38,17 @@ const generatePassword = () => {
 };
 
 const copyPassword = () => {
-  myText.select();
-  document.execCommand("copy");
-  alert("Password copied to clipboard!");
+  navigator.clipboard.writeText(myText.value).then(() => {
+    const originalText = copyButton.textContent;
+    copyButton.textContent = "Copied!";
+    copyButton.disabled = true;
+    setTimeout(() => {
+      copyButton.textContent = originalText;
+      copyButton.disabled = false;
+    }, 2000);
+  });
 };
+
 
 generateButton.addEventListener("click", generatePassword);
 copyButton.addEventListener("click", copyPassword);
