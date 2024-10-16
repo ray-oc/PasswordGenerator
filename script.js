@@ -7,34 +7,40 @@ const uppercaseChars = document.getElementById("toggleUpper");
 const symbolChars = document.getElementById("toggleSymbols");
 const generateButton = document.getElementById("generateButton");
 const copyButton = document.getElementById("copyButton");
-//---------------------------------------------------------------------
-//---------------------------------------------------------------------
+
 const numbers = "0123456789";
 const symbols = "!@#$%^&*()-_+=[]{},.;:\"'?<>/\\";
 const uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
 
-const generatePassword = () => {
-  let characterPool = "";
+const generatePassword = async () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      let characterPool = "";
 
-  if (numberChars.checked) characterPool += numbers;
-  if (lowercaseChars.checked) characterPool += lowercaseLetters;
-  if (uppercaseChars.checked) characterPool += uppercaseLetters;
-  if (symbolChars.checked) characterPool += symbols;
+      if (numberChars.checked) characterPool += numbers;
+      if (lowercaseChars.checked) characterPool += lowercaseLetters;
+      if (uppercaseChars.checked) characterPool += uppercaseLetters;
+      if (symbolChars.checked) characterPool += symbols;
 
-  if (characterPool === "") {
-    alert("Please select at least one character type.");
-    return;
-  }
-  let length = parseInt(myPassLength.value);
-  let password = "";
+      if (characterPool === "") {
+        alert("Please select at least one character type.");
+        resolve();
+        return;
+      }
 
-  for (let i = 0; i < length; i++) {
-    let randomIndex = Math.floor(Math.random() * characterPool.length);
-    password += characterPool[randomIndex];
-  }
+      let length = parseInt(myPassLength.value);
+      let password = "";
 
-  myText.value = password;
+      for (let i = 0; i < length; i++) {
+        let randomIndex = Math.floor(Math.random() * characterPool.length);
+        password += characterPool[randomIndex];
+      }
+
+      myText.value = password;
+      resolve();
+    }, 100);
+  });
 };
 
 const copyPassword = () => {
@@ -49,8 +55,12 @@ const copyPassword = () => {
   });
 };
 
+generateButton.addEventListener("click", async () => {
+  generateButton.disabled = true;
+  await generatePassword();
+  generateButton.disabled = false;
+});
 
-generateButton.addEventListener("click", generatePassword);
 copyButton.addEventListener("click", copyPassword);
 
 myPassLength.addEventListener("input", () => {
