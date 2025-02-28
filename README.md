@@ -53,6 +53,5 @@ Inspired by the need for secure, easy-to-generate passwords with a simple user e
 
 ---
 
-**Developed with ❤️ by [CodeMaster](https://github.com/ray-oc)**
 
 
